@@ -1,0 +1,12 @@
+@host = localhost:3000
+@schima = http
+
+
+GET {{schima}}://{{host}} HTTP/1.1
+
+###
+GET {{schima}}://{{host}}/error_gone HTTP/1.1
+
+###
+GET {{schima}}://{{host}}/custom_error_with_schema HTTP/1.1
+
