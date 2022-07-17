@@ -1,0 +1,28 @@
+@host = localhost:9000
+@schima = http
+
+
+POST {{schima}}://{{host}}/test_post HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "taro",
+    "mail": "example@example.com"
+}
+
+###
+GET {{schima}}://{{host}}/test_get
+    ?name=taro
+Content-Type: application/json
+
+
+###
+GET {{schima}}://{{host}}/test_get
+    ?name=t
+Content-Type: application/json
+
+###
+GET {{schima}}://{{host}}/test_get
+    ?name=taro
+    &mail=example@example.com
+Content-Type: application/json

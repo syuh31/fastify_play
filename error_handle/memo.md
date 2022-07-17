@@ -66,3 +66,12 @@ APIのエラーの形式は複数用意します。
 
 ## 参考
 [WebAPIでエラーをどう表現すべき？15のサービスを調査してみた](https://qiita.com/suin/items/f7ac4de914e9f3f35884)
+
+### addSchemaサンプルコード
+https://github.com/bykof/pokecoin-server/blob/502c4c325a2205c2261f5f3c654dfb57054e61ef/src/users/schemas/index.ts
+
+### addSchemaとコードを同じところに書く
+https://github.com/julianduque/mntd-envivo/blob/a39058cff1889eff48e9f6bf22bb5a82ce00ed9b/node/mntd-pass-api/server.js
+
+### open apiとschemaの組み合わせ
+https://github.com/karlosos/react-fastify-smarthome/blob/4039ad27529e46230aa01fd0250c83a91d0d5db4/src/docs/schemas/generic-error.json
