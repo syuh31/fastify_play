@@ -53,7 +53,7 @@ fastify.setValidatorCompiler(req => {
 })
 
 fastify.setErrorHandler(function (error, request, reply) {
-  const statusCode = error.statusCode
+  let statusCode = error.statusCode
   let response
 
   const { validation, validationContext } = error
@@ -62,14 +62,13 @@ fastify.setErrorHandler(function (error, request, reply) {
 
   // check if we have a validation error
   if (validation) {
-
+    statusCode = 422
     var errors = validation.map(function(elem) {
-      return elem;
-        // return {
-        //   "resource" : elem.instancePath,
-        //   "message" : elem.message
-        // };
-    
+      // return elem;
+      return {
+        "resource" : elem.instancePath.substring(1),
+        "message" : elem.message
+      };
     });
     
 
@@ -176,7 +175,6 @@ fastify.post('/setting', {
     }
   }
 }, (request, reply) => {
-  // reply.send({ params: request.query }) // echo the querystring
   reply.send({
     body: request.body
   })

@@ -1,3 +1,23 @@
+### [GitHub validation error](https://docs.github.com/en/rest/issues/issues#list-issues-assigned-to-the-authenticated-user--status-codes)
+|||
+|-|-|
+|200	|OK|
+|304	|Not modified|
+|404|Resource not found|
+|422	|Validation failed|
+	
+
+
+
+
+
+### [Twitter API Error code](https://developer.twitter.com/en/docs/twitter-ads-api/response-codes)
+|HTTP Code	|Error Code|
+|-|-|
+|403	|ACCOUNT_LOCKED_OUT|
+|404	|ACCOUNT_MEDIA_NOT_FOUND|
+|403	|ACCOUNT_NOT_FOUND|
+
 
 ```
 GET {{schima}}://{{host}}/foo_bar
