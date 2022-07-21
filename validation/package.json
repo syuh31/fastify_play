@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "node-dev server",
+    "start2": "fastify start server.js"
+  },
+  "dependencies": {
+    "fastify": "^4.2.1",
+    "pino-pretty": "^8.1.0"
+  },
+  "devDependencies": {
+    "fastify-cli": "^4.3.0",
+    "node-dev": "^7.4.3"
+  }
+}

@@ -1,0 +1,35 @@
+@host = localhost:3000
+@schima = http
+
+
+GET {{schima}}://{{host}}/hello HTTP/1.1
+
+###
+GET {{schima}}://{{host}}/nothing HTTP/1.1
+
+###
+GET {{schima}}://{{host}} HTTP/1.1
+
+###
+GET {{schima}}://{{host}}
+    ?ids[]=1
+    &ids[]=2
+    &ids[]=3
+
+###
+GET {{schima}}://{{host}}/foo_bar
+    ?foo=1
+    &bar=2
+
+###
+GET {{schima}}://{{host}}/foo_bar
+    ?foo=1
+    &bar=2
+    &baz=3
+    &qux=4
+
+###
+GET {{schima}}://{{host}}/foo_bar
+    ?bar=2
+    &baz=3
+
