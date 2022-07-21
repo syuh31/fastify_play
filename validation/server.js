@@ -58,18 +58,29 @@ fastify.setErrorHandler(function (error, request, reply) {
 
   const { validation, validationContext } = error
 
+  // console.log(error)
+
   // check if we have a validation error
   if (validation) {
+
+    var errors = validation.map(function(elem) {
+      return elem;
+        // return {
+        //   "resource" : elem.instancePath,
+        //   "message" : elem.message
+        // };
+    
+    });
+    
+
     response = {
       // validationContext will be 'body' or 'params' or 'headers' or 'query'
       message: `A validation error occurred when validating the ${validationContext}...`,
       // this is the result of your validation library...
-      errors: validation
+      errors: errors
     }
   } else {
-    response = {
-      message: 'An error occurred...'
-    }
+    response = error
   }
 
   // any additional work here, eg. log error
@@ -115,25 +126,82 @@ fastify.get('/foo_bar', {
   reply.send({ params: request.query }) // echo the querystring
 })
 
-fastify.get('/date', {
+fastify.get('/setting', {
   schema: {
     querystring: {
       type: "object",
       properties: {
-        date: {
-          description: "This is an example of string type of the date format",
+        new_date: {
           type: "string",
           format: "date",
-          maxLength: 10,
-          examples: ["2020-01-23"]
         },
       },
-      required: ["date"]
+      required: ["new_date"]
     }
   }
 }, (request, reply) => {
   reply.send({ params: request.query }) // echo the querystring
 })
+
+fastify.delete('/setting', {
+  schema: {
+    querystring: {
+      type: "object",
+      properties: {
+        new_date: {
+          type: "string",
+          format: "date",
+        },
+      },
+      required: ["new_date"]
+    }
+  }
+}, (request, reply) => {
+  reply.send({
+    params: request.query
+  })
+})
+
+fastify.post('/setting', {
+  schema: {
+    body: {
+      type: "object",
+      properties: {
+        new_date: {
+          type: "string",
+          format: "date",
+        },
+      },
+      required: ["new_date"]
+    }
+  }
+}, (request, reply) => {
+  // reply.send({ params: request.query }) // echo the querystring
+  reply.send({
+    body: request.body
+  })
+})
+
+fastify.put('/setting', {
+  schema: {
+    body: {
+      type: "object",
+      properties: {
+        new_date: {
+          type: "string",
+          format: "date",
+        },
+      },
+      required: ["new_date"]
+    }
+  }
+}, (request, reply) => {
+  // reply.send({ params: request.query }) // echo the querystring
+  reply.send({
+    body: request.body
+  })
+})
+
 
 // Run the server!
 const start = async () => {

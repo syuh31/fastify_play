@@ -34,13 +34,37 @@ GET {{schima}}://{{host}}/foo_bar
     &baz=3
 
 ###
-GET {{schima}}://{{host}}/date
+GET {{schima}}://{{host}}/setting
 
 ###
-GET {{schima}}://{{host}}/date
-    ?date=1990-03-03
+GET {{schima}}://{{host}}/setting
+    ?new_date=1990-03-03
 
 ###
-GET {{schima}}://{{host}}/date
-    ?date=asas
+GET {{schima}}://{{host}}/setting
+    ?new_date=asas
 
+
+
+###
+DELETE {{schima}}://{{host}}/setting
+    ?new_date=1990-03-03
+
+###
+DELETE {{schima}}://{{host}}/setting
+    ?new_date=aa
+
+###
+POST {{schima}}://{{host}}/setting HTTP/1.1
+content-type: application/json
+
+{
+    "new_date" : "1990-03-03"
+}
+###
+POST {{schima}}://{{host}}/setting HTTP/1.1
+content-type: application/json
+
+{
+    "new_date" : "1"
+}
