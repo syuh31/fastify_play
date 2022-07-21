@@ -134,6 +134,14 @@ fastify.get('/setting', {
           type: "string",
           format: "date",
         },
+        new_email: {
+          type: "string",
+          format: "email"
+        },
+        new_phone_number: {
+          type: "string",
+          pattern: "^\[0-9]{9,12}$"
+        }
       },
       required: ["new_date"]
     }

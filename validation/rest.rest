@@ -42,6 +42,12 @@ GET {{schima}}://{{host}}/setting
 
 ###
 GET {{schima}}://{{host}}/setting
+    ?new_date=1990-03-03
+    &new_email=example@example.com
+    &new_phone_number=012345678
+
+###
+GET {{schima}}://{{host}}/setting
     ?new_date=asas
 
 
