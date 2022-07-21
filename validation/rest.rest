@@ -33,3 +33,14 @@ GET {{schima}}://{{host}}/foo_bar
     ?bar=2
     &baz=3
 
+###
+GET {{schima}}://{{host}}/date
+
+###
+GET {{schima}}://{{host}}/date
+    ?date=1990-03-03
+
+###
+GET {{schima}}://{{host}}/date
+    ?date=asas
+

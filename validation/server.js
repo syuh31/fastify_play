@@ -12,31 +12,33 @@ const fastify = require('fastify')({
 
 
 const Ajv = require('ajv')
+const addFormats = require("ajv-formats")
+
 const schemaCompilers = {
-  body: new Ajv({
+  body: addFormats(new Ajv({
     removeAdditional: false, // remove additional properties
     coerceTypes: false, // change data type of data to match type keyword
     // useDefaults: true, // replace missing properties and items with the values from corresponding default keyword
 
     // Explicitly set allErrors to `false`.
     // When set to `true`, a DoS attack is possible.
-    allErrors: true
-  }),
-  params: new Ajv({
+    allErrors: false
+  })),
+  params: addFormats(new Ajv({
     removeAdditional: false,
     coerceTypes: true,
-    allErrors: true
-  }),
-  querystring: new Ajv({
+    allErrors: false
+  })),
+  querystring: addFormats(new Ajv({
     removeAdditional: false,
     coerceTypes: true,
-    allErrors: true
-  }),
-  headers: new Ajv({
+    allErrors: false
+  })),
+  headers: addFormats(new Ajv({
     removeAdditional: false,
     coerceTypes: true,
-    allErrors: true
-  })
+    allErrors: false
+  }))
 }
 
 fastify.setValidatorCompiler(req => {
@@ -107,6 +109,26 @@ fastify.get('/foo_bar', {
       },
       required: ["foo"],
       additionalProperties: false
+    }
+  }
+}, (request, reply) => {
+  reply.send({ params: request.query }) // echo the querystring
+})
+
+fastify.get('/date', {
+  schema: {
+    querystring: {
+      type: "object",
+      properties: {
+        date: {
+          description: "This is an example of string type of the date format",
+          type: "string",
+          format: "date",
+          maxLength: 10,
+          examples: ["2020-01-23"]
+        },
+      },
+      required: ["date"]
     }
   }
 }, (request, reply) => {

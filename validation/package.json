@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "start": "node-dev server",
-    "start2": "fastify start server.js"
+    "start": "node-dev server"
   },
   "dependencies": {
     "fastify": "^4.2.1",
