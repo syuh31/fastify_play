@@ -25,7 +25,7 @@ APIのエラーの形式は複数用意します。
   "statusCode": 500,
   "error": "Internal Server Error",
   "message": "httpErrors is not defined"
-  "code": 999,
+  "code": "SERVICENAME_ERROR_CONTENTS",
 }
 ```
 
@@ -38,7 +38,7 @@ APIのエラーの形式は複数用意します。
     {
        "resource": "user_name",     // プログラムが判断するフィールド名
        "field": "ユーザー名",        // 人がわかるフィールド名
-       "code": 111
+       "code": "SERVICENAME_ERROR_CONTENTS",
        "message": "エラーメッセージ"
     }
   ]
@@ -51,12 +51,12 @@ APIのエラーの形式は複数用意します。
   "statusCode": int,
   "error": string,
   "message": string
-  "code": int,
+  "code": string,
   "errors": [
     {
        "resource": string,
        "field": string,
-       "code": int
+       "code": string
        "message": string
     }
   ]
